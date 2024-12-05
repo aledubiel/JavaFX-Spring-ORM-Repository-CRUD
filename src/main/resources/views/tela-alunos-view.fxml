@@ -15,5 +15,9 @@
   <Label text="Lista de alunos" style="-fx-font-size: 20px;"/>
 
   <Button text="Carregar Alunos" onAction="#onCarregarAlunosButtonClick"/>
+
+  <Label fx:id="mediaIdadeAlunosLabel" />
+
   <ListView fx:id="listaAlunos" />
+
 </VBox>

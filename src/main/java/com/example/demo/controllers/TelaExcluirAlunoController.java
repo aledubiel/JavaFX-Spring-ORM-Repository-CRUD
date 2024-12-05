@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Aluno;
 import com.example.demo.repositories.AlunoRepository;
+import com.example.demo.services.AlunoService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,17 +20,17 @@ public class TelaExcluirAlunoController {
     @FXML
     private Label mensagemLabel;
 
-    private AlunoRepository alunoRepository;
+    private AlunoService alunoService;
 
-    public TelaExcluirAlunoController(AlunoRepository alunoRepository) {
-        this.alunoRepository = alunoRepository;
+    public TelaExcluirAlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
     }
 
     private Aluno alunoSelecionadoParaExclusao;
 
     @FXML
     protected void onBuscarAlunoButtonClick() {
-        alunoRepository.findById(Integer.parseInt(idAlunoTextField.getText())).ifPresentOrElse(
+        alunoService.buscarPorId(Integer.parseInt(idAlunoTextField.getText())).ifPresentOrElse(
                 aluno -> {
                     nomeAlunoLabel.setText(aluno.getNome());
                     mensagemLabel.setText("");
@@ -46,7 +47,7 @@ public class TelaExcluirAlunoController {
     @FXML
     protected void onExcluirAlunoButtonClick(){
         if(alunoSelecionadoParaExclusao != null){
-            alunoRepository.delete(alunoSelecionadoParaExclusao);
+            alunoService.excluir(alunoSelecionadoParaExclusao);
             mensagemLabel.setText("Aluno excluído com sucesso");
             nomeAlunoLabel.setText("");
             idAlunoTextField.setText("");

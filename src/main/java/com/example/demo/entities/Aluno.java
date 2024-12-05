@@ -17,4 +17,6 @@ public class Aluno {
 
     private String email;
 
+    private int idade;
+
 }
