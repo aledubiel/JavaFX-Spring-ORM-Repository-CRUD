@@ -11,11 +11,17 @@
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
   </padding>
 
-  <Label text="Cadastro Escolar" style="-fx-font-size: 20px;"/>
+  <Label text="Materiais de Construção" style="-fx-font-size: 20px;"/>
 
   <Button text="Abrir Alunos" onAction="#onAbrirAlunosButtonClick"/>
   <Button text="Novo Aluno" onAction="#onNovoAlunoButtonClick"/>
   <Button text="Editar Aluno" onAction="#onEditarAlunoButtonClick"/>
   <Button text="Excluir Aluno" onAction="#onExcluirAlunoButtonClick"/>
+
+  <Button text="Gerenciar Cliente" onAction="#onAbrirGerenciarClienteButtonClick"/>
+  <Button text="Gerenciar Produto" onAction="#onAbrirGerenciarProdutoClick"/>
+  <Button text="Emitir Ordem de Venda" onAction="#onAbrirOrdemVendaClick"/>
+  <Button text="Receber Mercadoria" onAction="#onAbrirRecebimentoMercadoriaClick"/>
+  <Button text="Saída de Mecadoria" onAction="#onAbrirSaidaMercadoriaClick"/>
 
 </VBox>
