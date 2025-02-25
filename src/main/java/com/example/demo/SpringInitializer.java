@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.controllers.TelaInicialController;
 import com.example.demo.utils.AbridorJanela;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,7 +21,8 @@ public class SpringInitializer extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         AbridorJanela abridorJanela = applicationContext.getBean(AbridorJanela.class);
-        abridorJanela.abrirNovaJanela("/views/tela-inicial-view.fxml", "Tela inicial", 600, 800);
+        abridorJanela.abrirNovaJanela("/views/tela-inicial-view.fxml", "Materiais de Construção", 1400, 800);
+
     }
 
     @Override

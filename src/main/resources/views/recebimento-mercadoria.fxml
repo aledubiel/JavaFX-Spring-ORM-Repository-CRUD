@@ -7,13 +7,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.demo.controllers.RecebimentoMercadoriaController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.demo.controllers.RecebimentoMercadoriaController"
+      prefHeight="600.0" prefWidth="800.0"
+      alignment="CENTER" spacing="20.0">
 
-    <Label fx:id="teste"/>
-    <Button text="teste" onAction="#ontest"/>
+    <HBox spacing="20.0" alignment="CENTER" style="-fx-background-color: #2C3E50; -fx-padding: 10px;">
+        <Label text="Recebimento de Mercadoria" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+    </HBox>
+
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="Digite o código do produto:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <TextField fx:id="idProduto" style="-fx-pref-width: 150px; -fx-background-color: #BDC3C7; -fx-border-color: #34495E; -fx-alignment: center;"/>
+        <Button text="Buscar" onAction="#onBuscarProdutoClick" style="-fx-pref-width: 150px; -fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Label fx:id="descricaoProduto" style="-fx-font-size: 14px; -fx-text-fill: #7F8C8D;"/>
+        <Label fx:id="estoqueProduto" style="-fx-font-size: 14px; -fx-text-fill: #7F8C8D;"/>
+
+        <Label text="Quantidade de entrada no estoque:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <TextField fx:id="quantidade" style="-fx-pref-width: 150px; -fx-background-color: #BDC3C7; -fx-border-color: #34495E; -fx-alignment: center;"/>
+
+        <Button text="Confirmar" onAction="#onRealizarEntradaClick" style="-fx-pref-width: 150px; -fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Label fx:id="mensagemRetorno" style="-fx-font-size: 14px; -fx-text-fill: #E74C3C;"/>
+    </VBox>
 
 </VBox>

@@ -12,6 +12,6 @@ public class RecebimentoMercadoria {
         this.abridorJanela = abridorJanela;
     }
     public static void abrir() {
-        abridorJanela.abrirNovaJanela("/views/recebimento-mercadoria.fxml", "Recebimento de Mercadoria", 300, 500);
+        abridorJanela.abrirNovaJanela("/views/recebimento-mercadoria.fxml", "Recebimento de Mercadoria", 400, 500);
     }
 }

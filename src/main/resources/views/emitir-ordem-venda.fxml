@@ -7,13 +7,79 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.collections.FXCollections?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.demo.controllers.EmitirOrdemVendaController"
-      prefHeight="400.0" prefWidth="600.0">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+      prefHeight="600.0" prefWidth="800.0"
+      alignment="CENTER" spacing="20.0">
 
-    <Label text="OV"/>
+    <HBox spacing="20.0" alignment="CENTER" style="-fx-background-color: #2C3E50; -fx-padding: 10px;">
+        <Label text="Emitir Ordem de Venda" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+    </HBox>
+
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="Cliente:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <HBox alignment="CENTER" spacing="10.0">
+            <TextField fx:id="codCliente" onKeyTyped="#onInsereCodigoCliente" style="-fx-pref-width: 250px; -fx-background-color: #BDC3C7; -fx-border-color: #34495E;"/>
+            <Label fx:id="informaçõesCliente" style="-fx-font-size: 14px; -fx-text-fill: #7F8C8D;"/>
+        </HBox>
+
+        <Label text="Produto:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <HBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label prefWidth="200" alignment="CENTER" style="-fx-text-fill: #34495E;">Código</Label>
+                <TextField fx:id="codProduto" onKeyTyped="#onInsereCodigoProduto" prefWidth="200" alignment="CENTER" style="-fx-background-color: #BDC3C7; -fx-border-color: #34495E;"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label prefWidth="200" alignment="CENTER" style="-fx-text-fill: #34495E;">Quantidade</Label>
+                <TextField prefWidth="200" alignment="CENTER" fx:id="quantidadeProduto" style="-fx-background-color: #BDC3C7; -fx-border-color: #34495E;"/>
+            </VBox>
+        </HBox>
+
+        <Label fx:id="descriçãoPrecoProduto" style="-fx-font-size: 14px; -fx-text-fill: #7F8C8D;"/>
+        <Label fx:id="estoqueProduto" style="-fx-font-size: 14px; -fx-text-fill: #7F8C8D;"/>
+
+        <Button onMouseClicked="#buttonAdicionarLista" text="Adicionar na Lista" style="-fx-pref-width: 200px; -fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <VBox alignment="CENTER" spacing="10.0">
+            <Label text="Lista de Produtos: " style="-fx-font-size: 14px; -fx-text-fill: #34495E;"/>
+            <ListView fx:id="listaProdutos" style="-fx-pref-height: 150px;"/>
+            <Button onMouseClicked="#buttonExcluirItemLista" text="Excluir" style="-fx-pref-width: 200px; -fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <HBox alignment="CENTER" spacing="10.0">
+            <Label text="Total: " style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label fx:id="totalPedido" text="0.0" style="-fx-text-fill: #E74C3C; -fx-font-weight: bold; font-size: 16px;"/>
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="20.0">
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #34495E;">Valor Pago:</Label>
+                <TextField fx:id="valorRecebido" onKeyTyped="#onAtualizaTroco" prefWidth="200" alignment="CENTER" style="-fx-background-color: #BDC3C7; -fx-border-color: #34495E;"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #34495E;">Troco:</Label>
+                <Label fx:id="trocoLabel" text="R$ 0,00" style="-fx-font-size: 14px; -fx-text-fill: #27AE60; font-weight: bold;"/>
+            </VBox>
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="10.0">
+            <Label text="Forma de Pagamento:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+            <ComboBox fx:id="formaPagamento" prefWidth="200" style="-fx-background-color: #BDC3C7; -fx-border-color: #34495E;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Pix"/>
+                        <String fx:value="Crédito"/>
+                        <String fx:value="Débito"/>
+                        <String fx:value="Cheque"/>
+                        <String fx:value="Dinheiro"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
+
+        <Button text="Finalizar OV" onAction="#onFinalizarOrdemVendaClick" style="-fx-pref-width: 200px; -fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </VBox>
 
 </VBox>

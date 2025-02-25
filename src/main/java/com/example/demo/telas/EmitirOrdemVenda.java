@@ -12,6 +12,6 @@ public class EmitirOrdemVenda {
         this.abridorJanela = abridorJanela;
     }
     public void abrir() {
-        abridorJanela.abrirNovaJanela("/views/emitir-ordem-venda.fxml", "Emitir Ordem de Venda", 300, 500);
+        abridorJanela.abrirNovaJanela("/views/emitir-ordem-venda.fxml", "Emitir Ordem de Venda", 900, 800);
     }
 }

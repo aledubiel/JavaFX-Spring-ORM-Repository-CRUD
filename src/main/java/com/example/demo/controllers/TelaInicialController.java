@@ -1,70 +1,74 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Ordem_Venda;
+import com.example.demo.entities.Produto;
+import com.example.demo.repositories.Ordem_Venda_Repository;
+import com.example.demo.repositories.ProdutoRepository;
 import com.example.demo.telas.*;
-import javafx.event.ActionEvent;
+import com.example.demo.telas.Cliente.GerenciarCliente_Criar;
+import com.example.demo.telas.Cliente.GerenciarCliente_Editar;
+import com.example.demo.telas.Produto.GerenciarProdutoCriar;
+import com.example.demo.telas.Produto.GerenciarProdutoEditar;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class TelaInicialController {
 
-    private TelaAlunos telaAlunos;
-    private TelaNovoAluno telaNovoAluno;
-    private TelaExcluirAluno telaExcluirAluno;
-    private TelaEditarAluno telaEditarAluno;
-
-    private GerenciarCliente telaGerenciarCliente;
-    private GerenciarProduto telaGerenciarProduto;
+    private GerenciarCliente_Criar gerenciarClienteCriar;
+    private GerenciarCliente_Editar telaGerenciarCliente_Editar;
+    private GerenciarProdutoCriar telaGerenciarProduto;
+    private GerenciarProdutoEditar telaGerenciarProdutoEditar;
     private EmitirOrdemVenda telaOrdemVenda;
     private RecebimentoMercadoria telaRecebimentoMercadoria;
     private SaidaMercadoria telaSaidaMercadoria;
 
-    public TelaInicialController(TelaAlunos telaAlunos,
-                                 TelaNovoAluno telaNovoAluno,
-                                 TelaExcluirAluno telaExcluirAluno,
-                                 TelaEditarAluno telaEditarAluno,
-                                 GerenciarCliente telaGerenciarCliente,
-                                 GerenciarProduto telaGerenciarProduto,
+    @FXML
+    private ListView<Ordem_Venda> listaVendas = new ListView<>();
+
+    @FXML
+    private ListView<Produto> listaEstoque = new ListView<>();
+
+    private ProdutoRepository produtoRepository;
+
+    private Ordem_Venda_Repository ordem_Venda_Repository;
+
+
+
+    public TelaInicialController(
+                                 GerenciarProdutoCriar telaGerenciarProduto,
+                                 GerenciarCliente_Criar gerenciarClienteCriar,
+                                 GerenciarCliente_Editar telaGerenciarCliente_Editar,
+                                 GerenciarProdutoEditar telaGerenciarProdutoEditar,
                                  EmitirOrdemVenda telaOrdemVenda,
                                  RecebimentoMercadoria telaRecebimentoMercadoria,
-                                 SaidaMercadoria telaSaidaMercadoria) {
-        this.telaAlunos = telaAlunos;
-        this.telaNovoAluno = telaNovoAluno;
-        this.telaExcluirAluno = telaExcluirAluno;
-        this.telaEditarAluno = telaEditarAluno;
+                                 SaidaMercadoria telaSaidaMercadoria,
+                                 ProdutoRepository produtoRepository,
+                                 Ordem_Venda_Repository ordem_Venda_Repository) {
 
-        this.telaGerenciarCliente = telaGerenciarCliente;
         this.telaGerenciarProduto = telaGerenciarProduto;
+        this.gerenciarClienteCriar = gerenciarClienteCriar;
+        this.telaGerenciarProdutoEditar = telaGerenciarProdutoEditar;
+        this.telaGerenciarCliente_Editar = telaGerenciarCliente_Editar;
         this.telaOrdemVenda = telaOrdemVenda;
         this.telaRecebimentoMercadoria = telaRecebimentoMercadoria;
         this.telaSaidaMercadoria = telaSaidaMercadoria;
+        this.produtoRepository = produtoRepository;
+        this.ordem_Venda_Repository = ordem_Venda_Repository;
     }
 
     @FXML
-    protected void onAbrirAlunosButtonClick() {
-        telaAlunos.abrir();
-    }
+    public void onAbrirGerenciarClienteButtonClick() { gerenciarClienteCriar.abrir();  }
 
     @FXML
-    protected void onNovoAlunoButtonClick(){
-        telaNovoAluno.abrir();
-    }
-
-    @FXML
-    protected void onExcluirAlunoButtonClick(){
-        telaExcluirAluno.abrir();
-    }
-
-    @FXML
-    protected void onEditarAlunoButtonClick(){
-        telaEditarAluno.abrir();
-    }
-
-    @FXML
-    public void onAbrirGerenciarClienteButtonClick() { telaGerenciarCliente.abrir();  }
+    public void aoAbrirEditarCliente(){telaGerenciarCliente_Editar.abrir(); }
 
     @FXML
     public void onAbrirGerenciarProdutoClick(){telaGerenciarProduto.abrir(); }
+
+    @FXML
+    public void onAbrirGerenciarProdutoEditarClick(){telaGerenciarProdutoEditar.abrir(); }
 
     @FXML
     public void onAbrirOrdemVendaClick() { telaOrdemVenda.abrir(); }
@@ -73,5 +77,16 @@ public class TelaInicialController {
     public void onAbrirRecebimentoMercadoriaClick() {telaRecebimentoMercadoria.abrir(); }
 
     @FXML
-    public void onAbrirSaidaMercadoriaClick() { SaidaMercadoria.abrir(); }
+    public void onAbrirSaidaMercadoriaClick() { telaSaidaMercadoria.abrir(); }
+
+    @FXML
+    public void onAtualizarRelatorio() {
+        listaEstoque.getItems().clear();
+        listaVendas.getItems().clear();
+        produtoRepository.findAll().forEach(produto -> listaEstoque.getItems().add(produto));
+        ordem_Venda_Repository.findAll().forEach(ordem_Venda -> listaVendas.getItems().add(ordem_Venda));
+    }
+
+
+
 }

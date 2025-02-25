@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.demo.controllers.Produto.GerenciarProdutoEditarController"
+      prefHeight="600.0" prefWidth="800.0"
+      alignment="CENTER" spacing="20.0" style="-fx-background-color: #ECF0F1;">
+
+    <!-- Header -->
+    <HBox spacing="20.0" alignment="CENTER" style="-fx-background-color: #2C3E50; -fx-padding: 10px;">
+        <Label text="Editar Produto" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Conteúdo Principal -->
+    <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 20px;">
+        <Label text="Digite o código do Produto que deseja editar:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <TextField fx:id="idProduto" style="-fx-pref-width: 300px; -fx-background-color: #BDC3C7; -fx-border-color: #34495E; -fx-alignment: center;"/>
+        <Button text="Buscar" onAction="#buscarProdutoClick" style="-fx-pref-width: 200px; -fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Label text="Descrição:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <TextField fx:id="nomeProduto" style="-fx-pref-width: 300px; -fx-background-color: #BDC3C7; -fx-border-color: #34495E; -fx-alignment: center;"/>
+
+        <Label text="Preço:" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495E;"/>
+        <TextField fx:id="precoProduto" style="-fx-pref-width: 300px; -fx-background-color: #BDC3C7; -fx-border-color: #34495E; -fx-alignment: center;"/>
+
+        <Button text="Editar Produto" onAction="#editarProdutoClick" style="-fx-pref-width: 200px; -fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Label fx:id="mensagemRetorno" style="-fx-font-size: 14px; -fx-text-fill: #E74C3C;"/>
+    </VBox>
+
+</VBox>

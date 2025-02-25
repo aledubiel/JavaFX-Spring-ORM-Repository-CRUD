@@ -1,4 +1,4 @@
-package com.example.demo.telas;
+package com.example.demo.telas.Cliente;
 
 import com.example.demo.utils.AbridorJanela;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,6 @@ public class GerenciarCliente_Criar {
         this.abridorJanela = abridorJanela;
     }
     public static void abrir(){
-        abridorJanela.abrirNovaJanela("/views/GerenciarCliente/criar.fxml", "Editar Cliente", 300, 500);
+        abridorJanela.abrirNovaJanela("/views/GerenciarCliente/criar.fxml", "Criar Cliente", 300, 600);
     }
 }

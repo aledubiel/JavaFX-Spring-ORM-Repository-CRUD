@@ -8,7 +8,6 @@ import java.util.List;
 @Entity @Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 
 public class Cliente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,6 +17,6 @@ public class Cliente {
     private String telefone;
     private String endereco;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     private List<Ordem_Venda> ordemVendas;
 }

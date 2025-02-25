@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+
 public class Itens_Ordem_Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,5 +24,9 @@ public class Itens_Ordem_Venda {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
+    //reescrevendo metodo para que fique bom nas litas
+    public String toString() {
+        return String.format("Produto: %s - Quantidade: %d - Subtotal: %.2f", produto.getNome(), quantidade, subtotal);
+    }
 
 }
